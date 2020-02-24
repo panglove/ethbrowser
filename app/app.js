@@ -3,10 +3,10 @@
 // TODO: Put go into a config.js
 // But how to include a file from local?
 
-var GETH_HOSTNAME	= "localhost";	// put your IP address!
+var GETH_HOSTNAME	= "49.4.6.194";	// put your IP address!
 var APP_HOSTNAME 	= "See package.json --> scripts --> start: Change 'localhost'!!!";
 
-var GETH_RPCPORT  	= 8545; 		// for geth --rpcport GETH_RPCPORT
+var GETH_RPCPORT  	= 8488; 		// for geth --rpcport GETH_RPCPORT
 var APP_PORT 		= "See package.json --> scripts --> start: Perhaps change '8000'";
 
 // this is creating the corrected geth command
@@ -100,8 +100,11 @@ angular.module('ethExplorer', ['ngRoute','ui.bootstrap','filters','ngSanitize'])
         $rootScope.web3=web3;
         // MetaMask injects its own web3 instance in all pages, override it
         // as it might be not compatible with the one used here
-        if (window.web3)
-            window.web3 = web3;
+        if (!window.web3)
+	    {
+		    window.web3 = web3;
+	    }
+            
         function sleepFor( sleepDuration ){
             var now = new Date().getTime();
             while(new Date().getTime() < now + sleepDuration){ /* do nothing */ }
