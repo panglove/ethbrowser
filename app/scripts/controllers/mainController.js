@@ -9,6 +9,15 @@ angular.module('ethExplorer')
         updateTXList();
         updateStats();
         getHashrate();
+
+        setInterval(() => {
+            getETHRates();
+            updateBlockList();
+            updateTXList();
+            updateStats();
+            getHashrate();
+
+        }, 10000);
         // web3.eth.filter("latest", function(error, result) {
         //     if (!error) {
         //         getETHRates();
