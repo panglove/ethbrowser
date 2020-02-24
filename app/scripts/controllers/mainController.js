@@ -9,7 +9,6 @@ angular.module('ethExplorer')
         updateTXList();
         updateStats();
         getHashrate();
-        $scope.$apply();
         // web3.eth.filter("latest", function(error, result) {
         //     if (!error) {
         //         getETHRates();
